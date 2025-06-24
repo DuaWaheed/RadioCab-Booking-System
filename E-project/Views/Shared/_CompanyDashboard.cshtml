@@ -1,0 +1,161 @@
+﻿@inject E_project.Models.mycontext _context
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using E_project.Models
+
+@{
+    var admin_session = HttpContextAccessor.HttpContext?.Session?.GetString("company_session");
+    var admin = admin_session != null ? _context.Companies.FirstOrDefault(a => a.CompanyId == int.Parse(admin_session)) : null;
+
+    var CompanyLogo = admin?.CompanyLogo ?? "default.png";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compnay Dashboard</title>
+    <link rel="shortcut icon" href="~/images/Logo/favicon_logo.png" type="image/x-icon">
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="~/css/Driver/dashboard.css" />
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+          rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul class="sidebar">
+                <li style="text-align: center; padding: 0px 0">
+                    <img src="~/images/Logo/Dashboard Logo.png"
+                         alt="Logo"
+                         style="
+                width: 220px;
+                height: 10px;
+                display: block;
+                margin: 0 auto;
+                object-fit: contain;
+              " />
+                </li>
+
+                <!-- Dashboard -->
+                <li class="active">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- Fleet Management -->
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="car-sport-outline"></ion-icon></span>
+                        <span class="title">Profile</span>
+                    </a>
+                </li>
+
+                <!-- Earnings -->
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="wallet-outline"></ion-icon></span>
+                        <span class="title">Subscriptions</span>
+                    </a>
+                </li>
+
+                <!-- Drivers -->
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                        <span class="title">Drivers</span>
+                    </a>
+                </li>
+
+                <!-- Bookings -->
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
+                        <span class="title">Advertisers</span>
+                    </a>
+                </li>
+
+                <!-- Notifications -->
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="notifications-outline"></ion-icon></span>
+                        <span class="title">Notifications</span>
+                    </a>
+                </li>
+
+                <!-- Settings -->
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="heading">
+                    <h1>Company Control Panel</h1>
+                    <!-- For Driver Dashboard -->
+                    <!-- <h1>Company Operations Hub</h1>  For Company Dashboard -->
+                </div>
+                <div class="nav-icons">
+                    <a href="#" class="nav-link">
+                        <i class="bx bxs-bell icon"></i>
+                        <span class="badge">5</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <!-- for message -->
+                        <!-- <i class="bx bxs-message-square-dots icon"></i> -->
+                        <!-- for decoded later -->
+                        <i class="bx bx-wallet icon"></i>
+                        <span class="badge">8</span>
+                    </a>
+                    <span class="divider"></span>
+                </div>
+
+                <div class="profile">
+                    <img src="@Url.Content("~/Companies/" + CompanyLogo)" asp-append-version="true"
+                         alt="company-logo" id="profile-img" />
+                    <ul class="profile-link" id="profile-dropdown">
+                        <li>
+                            <a asp-controller="Company" asp-action="Profile"><i class="bx bxs-user-circle icon"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Company" asp-action="Subscription" ><i class="bx bxs-badge-dollar"></i> Subscriptions</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Company" asp-action="LogoutCompany"><i class="bx bxs-log-out-circle"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="main-content">      <!-- Render the body content from the view -->      @RenderBody()  </div>
+
+        </div>
+
+        <!-- =========== Scripts =========  -->
+        <script src="~/js/Driver/dashboard.js"></script>
+
+        <!-- ====== ionicons ======= -->
+        <script type="module"
+                src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule
+                src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

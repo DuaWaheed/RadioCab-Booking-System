@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<E_project.Models.Feedback>
+
+<body>
+   
+       
+        <div id="cont">
+        <div id="intro">
+            <h1>Inroduction of <strong style="color:orange;"> Radio Cab Booking:</strong></h1>
+            <br />
+            <p ><strong style="color:red;">RadioCabs.in</strong> is your comprehensive online directory for discovering trusted and verified Radio Taxi operators across all major cities. Whether you're in Karachi, Lahore, Islamabad, or beyond — our platform helps you explore company listings, learn about their services, and connect directly with the right provider for your transportation needs. Companies and drivers maintain up-to-date profiles, and users can browse, search, and select the service that suits them best. Start exploring today and experience the convenience of finding professional cab services, all in one place!"</p>
+            @* <button>Explore more</button> *@
+           <a asp-controller="Home" asp-action="Services" style="background-color: orange; color: white; padding: 10px 20px; border: none; border-radius: 4px; text-decoration: none; display: inline-block; font-weight:bold;">Explore More</a>
+
+
+        </div>
+        <div id="img1">
+            <img src="~/images/Yellow and Black Illustrative Automotive Luxury Car Logo.png" alt="Alternate Text" />
+        </div>
+        </div>
+        
+
+      
+   <center><h2>Available in Major Cities</h2></center>
+<br /><br /> 
+<center>
+  <div class="row w-75" >
+    <div class="col-md-4 mb-4">
+      <div class="card border-warning shadow-sm" style="border: 2px solid orange; border-radius: 12px;">
+        <div class="card-body text-center">
+          <h5 class="card-title">Karachi</h5>
+          <p class="card-text">Verified Taxi Listings, Driver Directory & Service Info in Karachi</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-warning shadow-sm" style="border: 2px solid orange; border-radius: 12px;">
+        <div class="card-body text-center">
+          <h5 class="card-title">Lahore</h5>
+          <p class="card-text">Find Trusted Radio Cab Operators, Explore Membership Plans & Advertise</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-warning shadow-sm" style="border: 2px solid orange; border-radius: 12px;">
+        <div class="card-body text-center">
+          <h5 class="card-title">Islamabad</h5>
+          <p class="card-text">Search Registered Drivers, Companies, or Submit Feedback with Ease</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</center>
+
+
+     <br /><br />
+    <div id="about">
+        <div id="main1">
+        <h1>About us</h1>
+        <p>Radio Cab's purpose is to simplify and improve the lives of people and build an awesome organisation that inspires.
+Learn more about our purpose, people and services.</p>
+<a asp-controller="Home" asp-action="AboutUS" style="background-color: orange; color: white; padding: 10px 20px; border: none; border-radius: 4px; text-decoration: none; display: inline-block; font-weight:bold;">Read More</a>
+</div>
+<div id="img2">
+    <img src="~/images/img1.png" alt="Alternate Text" />
+</div>
+    </div>
+<br /><br /><br />
+    <div id="top">
+        <div id="com">
+    <img src="~/images/img2.jpg" alt="Alternate Text" />
+</div>
+     <div id="main2">
+        <h1>Top RadioCab Companies</h1>
+        <p> Explore our top-performing companies offering the highest earnings, training, and rewards.</P>
+           <p> We also partner with other trusted cab services to provide flexible work options for all driving needs.
+</p>
+<a asp-controller="Home" asp-action="TopCabCompanies" 
+   style="background-color: orange; color: black; padding: 10px 20px; border: solid black; border-radius: 4px; text-decoration: none; display: inline-block;">
+   Read More
+</a>
+
+</div>
+</div>
+
+ <br /><br /><br />
+    <div id="our">
+        <div id="main3">
+        <h1>Our Social Impact</h1>
+        <p>A cab company creates a strong social impact by improving access to transportation, especially in areas with limited public transit. It offers flexible job opportunities for drivers, helping many people earn a living or supplement their income.</p>
+ <a asp-controller="Home" asp-action="OurSocialImpact" style="background-color: orange; color: white; padding: 10px 20px; border: none; border-radius: 4px; text-decoration: none; display: inline-block; font-weight:bold;">Read More</a>
+</div>
+<div id="img3">
+    <img src="~/images/img3.jpg" alt="Alternate Text" />
+</div>
+    </div>
+    
+    <br /><br /><br />
+    <hr/>
+    <div id="why">
+        
+<div id="img4">
+    <img src="~/images/img4.jpg" alt="Alternate Text" />
+</div>
+<div id="main4">
+        <h1>Why Choose us?</h1>
+        <p>At RadioCabs.in, we make it easy for you to find the most trusted and reliable Radio Taxi services in your city. Our platform is designed to connect you with well-established taxi operators and experienced drivers, offering you complete transparency and convenience. 
+</p>
+ <a asp-controller="Home" asp-action="WhyChooseUs" style="background-color: orange; color: white; padding: 10px 20px; border: none; border-radius: 4px; text-decoration: none; display: inline-block; font-weight:bold;">Read More</a>
+</div>
+    </div>
+<br /><br />
+<hr/>
+
+<h2 class="counter-heading">Trusted by Thousands Across Pakistan</h2>
+
+
+<div class="counter-container">
+  <div class="counter-box">
+    <h2 class="counter" data-target="500">0</h2>
+    <p>Drivers</p>
+  </div>
+  <div class="counter-box">
+    <h2 class="counter" data-target="100">0</h2>
+    <p>Companies</p>
+  </div>
+</div>
+<br />
+<br/>
+@* <h1 id="feed" > *@
+@*     FEEDBACKS: *@
+@* </h1> *@
+@* <div class="testimonial-container"> *@
+@*   <div class="testimonial-slide active"> *@
+@*     <img src="~/images/img5.jpg" alt="Person 1"> *@
+@*     <p>📝"Great service and very reliable!"</p> *@
+@*     <h3>Ali Khan</h3> *@
+@*     <h5>CEO, City Cabs</h5> *@
+@*   </div> *@
+@*   <div class="testimonial-slide"> *@
+@*     <img src="~/images/img6.jpg" alt="Person 2"> *@
+@*     <p>"📝 "Great platform! I found a reliable taxi company in my city within minutes. Very easy to navigate." *@
+
+@* "</p> *@
+@*     <h3>Mehwish Raza</h3> *@
+@*     <h5>Manager, FastRide</h5> *@
+@*   </div> *@
+@*   <div class="testimonial-slide"> *@
+@*     <img src="~/images/img7.jpg" alt="Person 3"> *@
+@*     <p>📝 "Some company contact details were outdated. Please update listings more frequently."</p> *@
+@*     <h3>Rizwan Ahmed</h3> *@
+@*     <h5>Owner, Speedy Cab</h5> *@
+@*   </div> *@
+@*    <div class="testimonial-slide"> *@
+@*     <img src="~/images/img8.png" alt="Person 4"> *@
+@*     <p>📝 "Thanks to RadioCabs.in, I was able to register my company and got new clients within a week!"</p> *@
+@*     <h3>Muhammad Ahmed</h3> *@
+@*     <h5>Owner, Speedy Cab</h5> *@
+@*   </div> *@
+@*    <div class="testimonial-slide"> *@
+@*     <img src="~/images/img9.jpg" alt="Person 5"> *@
+@*     <p>📝"Loved the quick booking process!"</p> *@
+@*     <h3>Nasir Khan</h3> *@
+@*     <h5>Owner, Speedy Cab</h5> *@
+@*   </div> *@
+@* </div> *@
+<h1 id="feed">FEEDBACKS:</h1>
+<div class="testimonial-container">
+    @if (Model != null && Model.Any())
+    {
+        int count = 0;
+        foreach (var fb in Model)
+        {
+            <div class="testimonial-slide @(count == 0 ? "active" : "")">
+                <img src="@fb.ImagePath" alt="@fb.Name" />
+                <p>📝 "@fb.Description"</p>
+                <h3>@fb.Name</h3>
+                <h5>@fb.City</h5>
+            </div>
+            count++;
+        }
+    }
+    else
+    {
+        <p>No feedback submitted yet.</p>
+    }
+</div>
+
+
+
+<div id="auth-preview" style="background-color: #f8f8f8; padding: 40px; text-align: center;">
+  <h2 style="margin-bottom: 10px; color: #333;">Want to List Your Taxi Company ?</h2>
+  <p style="font-size: 16px; color: #555; margin-bottom: 20px;">
+    Join RadioCabs.in to promote your services, get listed in our national directory, and connect with more clients across major cities.
+  </p>
+  
+    <button onclick="window.location.href='register.html'" style="padding: 12px 24px; background-color: orange; color: white; border: none; border-radius: 6px; font-size: 16px;">
+ <a asp-controller="Company" asp-action="RegisterCompany" style="text-decoration: none;"> Register Now</a>
+</button>
+
+ 
+</div>
+
+
+
+
+    <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">↑</button>
+
+
+   
+
+
+   
+
+</body>
+

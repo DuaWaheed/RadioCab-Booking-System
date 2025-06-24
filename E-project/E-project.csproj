@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>E_project</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\images\Admin\Index\**" />
+    <Compile Remove="wwwroot\images\Company\Index\**" />
+    <Compile Remove="wwwroot\images\Driver\Index\**" />
+    <Content Remove="wwwroot\images\Admin\Index\**" />
+    <Content Remove="wwwroot\images\Company\Index\**" />
+    <Content Remove="wwwroot\images\Driver\Index\**" />
+    <EmbeddedResource Remove="wwwroot\images\Admin\Index\**" />
+    <EmbeddedResource Remove="wwwroot\images\Company\Index\**" />
+    <EmbeddedResource Remove="wwwroot\images\Driver\Index\**" />
+    <None Remove="wwwroot\images\Admin\Index\**" />
+    <None Remove="wwwroot\images\Company\Index\**" />
+    <None Remove="wwwroot\images\Driver\Index\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.12.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\Admin\" />
+    <Folder Include="wwwroot\images\Company\CompanyLogo\" />
+    <Folder Include="wwwroot\images\Driver\" />
+    <Folder Include="wwwroot\images\Advertisers\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,148 @@
+﻿@model IEnumerable<E_project.Models.Advertiser>
+@{
+    ViewData["Title"] = "Company Listings";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+</head>
+
+<body style="background-color: white; font-family: 'Poppins', sans-serif;">
+
+  
+     
+
+       
+           <center> <div class="cab-content">
+                <h3>Explore Top Radio Cab Services</h3>
+                <p>
+                Discover top-rated cab services in your city that redefine urban travel with unmatched safety, speed, and comfort.
+                </p>
+            </div></center>
+      
+  <br /><br />
+
+
+    <div class="advertisement-cards">
+        @foreach (var ad in Model)
+        {
+            <div class="card">
+                <div class="card-content">
+                    <h1>@ad.CompanyName</h1>
+                    <p><strong style="font-weight:bolder; font-size:15px;color:black">Designation:</strong> @ad.Designation</p>
+                    <p><strong style="font-weight:bolder; font-size:15px;color:black">Email:</strong> @ad.Email</p>
+                    <p><strong style="font-weight:bolder; font-size:15px;color:black">City:</strong> @ad.City</p>
+                    <p><strong style="font-weight:bolder; font-size:15px;color:black">Description:</strong> @ad.Description</p>
+                    <p><strong style="font-weight:bolder; font-size:15px;color:black">Payment:</strong>   <span style="color: green; font-weight:bold">@ad.PaymentAmount</span></p>
+                    <a href="mailto:@ad.Email" class="contact-button">Contact</a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .advertisement-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card {
+            background: linear-gradient(135deg, burlywood, #fff0d1);
+            /* background-color:transparent; */
+            border: 2px solid #ffa500;
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(255, 165, 0, 0.2);
+            width: 300px;
+            padding: 25px;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3);
+            }
+
+        .card-content h1 {
+            font-size: 25px;
+            margin-bottom: 15px;
+            /* color: #e65100; */
+            color:darkred;
+            font-weight:bold;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: black;
+            margin: 6px 0;
+        }
+
+        .contact-button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 18px;
+            background-color: darkred;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+            .contact-button:hover {
+                background-color: #b22222;
+                color:white;
+            }
+
+       
+
+        .main-heading {
+            color: #d93c3c;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+       
+
+        .cab-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            max-width: 700px;
+            text-align: center;
+        }
+
+            .cab-content h3 {
+                font-size: 25px;
+                /* color: #8b0000; */
+                color:orange;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+
+            .cab-content p {
+                font-size: 16px;
+                color: #333;
+                font-weight: 500;
+            }
+            </style>
+    <script>
+        const myCarousel = document.querySelector('#carouselExampleCaptions');
+        const carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 2000,
+            ride: 'carousel'
+        });
+    </script>
+</body>
+</html>

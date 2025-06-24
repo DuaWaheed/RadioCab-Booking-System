@@ -1,0 +1,138 @@
+﻿@model E_project.Models.Company
+
+@{
+    ViewBag.Title = "Subscription Status";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Subscription Status</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff8f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .subscription-container {
+            margin-left: 80px; /* Adjust this if your sidebar width is different */
+            padding: 40px;
+            background-color: #fff8f4;
+            min-height: 100vh;
+        }
+
+        .subscription-box {
+            background: #fff;
+            border-left: 6px solid #ff6600;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(255, 165, 0, 0.2);
+            max-width: 100%;
+        }
+
+            .subscription-box h2 {
+                color: #ff6600;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #ffa94d;
+                padding-bottom: 10px;
+                font-size: 28px;
+            }
+
+        .subscription-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 18px;
+        }
+
+        .detail-item {
+            flex: 1 1 200px;
+            background-color: #fffaf5;
+            border: 1px solid #ffe0b3;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+            .detail-item strong {
+                color: #ff6600;
+            }
+
+        .status-paid {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-unpaid {
+            color: red;
+            font-weight: bold;
+        }
+
+        .pay-now-btn {
+            display: inline-block;
+            background: linear-gradient(to bottom right, orange, rgba(255, 193, 7, 0.9), rgba(255, 235, 59, 0.85) );
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .pay-now-btn:hover {
+                background-color: #e65c00;
+                transform: translateY(-2px);
+            }
+    </style>
+</head>
+<body>
+    <div class="subscription-container">
+        <div class="subscription-box">
+            <h2>@Model.CompanyName</h2>
+            <div class="subscription-details">
+                <div class="detail-item">
+                    <strong>Payment Type:</strong> @Model.PaymentType
+                </div>
+                <div class="detail-item">
+                    <strong>Payment Amount:</strong> @Model.PaymentAmount
+                </div>
+                <div class="detail-item">
+                    <strong>Status:</strong>
+                    @if (Model.Status == "Paid")
+                    {
+                        <span class="status-paid">Paid</span>
+                    }
+                    else
+                    {
+                        <span class="status-unpaid">Unpaid</span>
+                    }
+                </div>
+            </div>
+                    @if (Model.Status == "Unpaid")
+                    {
+                        if (Model.PaymentType == "Quarterly")
+                        {
+                            <a href="https://buy.stripe.com/test_eVa16MaQ99RHdiw5kl" class="pay-now-btn">Pay Quarterly</a>
+                        }
+                        else if (Model.PaymentType == "Monthly")
+                        {
+                            <a href="https://buy.stripe.com/test_8wM7va9M53tj1zO5kk" class="pay-now-btn">Pay Monthly</a>
+                        }
+                        else
+                        {
+                            <a href="/Payment/@Model.CompanyId" class="pay-now-btn">Pay Now</a>
+                        }
+                    }
+                </div>
+            </div>
+
+      
+        </div>
+    </div>
+</body>
+</html>

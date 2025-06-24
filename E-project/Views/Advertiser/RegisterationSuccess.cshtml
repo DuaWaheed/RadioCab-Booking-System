@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Account Activation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/Company/registeration_success.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background: #f8f9fa;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 440px;
+            width: 90%;
+            padding: 40px 30px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideIn 0.5s ease forwards;
+        }
+
+            .popup h1 {
+                font-size: 24px;
+                color: orange;
+                margin-bottom: 15px;
+            }
+
+            .popup p {
+                font-size: 15px;
+                color: #555;
+                line-height: 1.6;
+                margin-bottom: 25px;
+            }
+
+            .popup .redirect-msg {
+                display: inline-block;
+                background: linear-gradient(to bottom right, orange, rgba(255, 193, 7, 0.9), rgba(252, 227, 4, 0.85) );
+                color: white;
+                padding: 10px 22px;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+                pointer-events: none;
+            }
+
+            .popup .note {
+                margin-top: 16px;
+                font-size: 13px;
+                color: #888;
+            }
+
+       
+    </style>
+</head>
+<body>
+
+    <div class="overlay">
+        <div class="popup">
+            <h1>Activation Link Sent</h1>
+            <p>
+                Thank you for registering!<br />
+                <script async
+                        src="https://js.stripe.com/v3/buy-button.js">
+                </script>
+
+                <stripe-buy-button buy-button-id="buy_btn_1RKg7QFa414372vON0UneSW8"
+                                   publishable-key="pk_test_51RKPNsFa414372vObiG9CjKrUZ2NKUrTM5Eq32wvtMEnRiH3aoBLy9Qx2YDWhC2OuGK6mUgpITdRMrECrALlvM7d00Mau9xohG">
+                </stripe-buy-button>
+                Please check your email inbox — a login link has been sent to activate your account.
+            </p>
+            <div class="redirect-msg">Redirecting to Gmail in 20 seconds...</div>
+            <div class="note">Didn’t get it? Check your spam or promotions tab.</div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+          window.location.href = "https://mail.google.com/";
+        }, 20000);
+    </script>
+
+</body>
+</html>

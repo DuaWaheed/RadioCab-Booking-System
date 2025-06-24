@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - E_project</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/E_project.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="~/Scripts/site.js"></script>
+
+
+
+
+
+</head>
+<body>
+
+ 
+    <header>
+        <nav>
+            <div id="logo">
+                <img src="~/images/Radio (2).png" alt="Logo" />
+            </div>
+            <div id="dua">
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" id="login">LOGIN</a>
+                        <ul class="dropdown-content">
+                            @* <li><a asp-controller="Home" asp-action="Login">LOGIN USER</a></li> *@
+                            <li><a asp-controller="Company" asp-action="LoginCompany">LOGIN COMPANY</a></li>
+                            <li><a asp-controller="Home" asp-action="LoginDriver">LOGIN DRIVER</a></li>
+                        </ul>
+                    </li>
+                    <li><a a asp-controller="Feedback" asp-action="Feedback">FEEDBACK</a></li>
+                    <li><a asp-controller="Advertise" asp-action="Advertise">ADVERTISE</a></li>
+                    <li><a asp-controller="Home" asp-action="Services" >SERVICES</a></li>
+                    <li><a href="#">DRIVERS</a></li>
+                    <li><a asp-controller="Company" asp-action="CompanyList">LISTING</a></li>
+                    <li><a a asp-controller="Home" asp-action="Index">HOME</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+
+    <hr/>
+
+
+
+
+    <div class="container"> 
+        <main role="main" class="pb-3"> 
+            @RenderBody() 
+        </main> 
+    </div>
+
+    <br />
+    <br />
+
+   
+        <footer class="footer">
+            <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">advertisement</a></li>
+                        <li><a href="#">membership</a></li>
+                        
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>our services</h4>
+                    <ul>
+                        <li><a href="#">drivers</a></li>
+                        <li><a href="#">trusted companies</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    
+</body>
+</html>
