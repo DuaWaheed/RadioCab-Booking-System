@@ -1,0 +1,293 @@
+﻿@model E_project.Models.Advertiser
+
+@{
+    ViewData["Title"] = "LoginAdvertiser";
+}
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertiser Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <form asp-controller="Advertiser" asp-action="LoginAdvertiser" method="post" class="form_main">
+            <p class="heading">Login Advertiser</p>
+
+            <!-- Advertiser Email Input Field -->
+            <div class="inputContainer">
+                <svg class="inputIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#2e2e2e" viewBox="0 0 16 16">
+                    <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"></path>
+                </svg>
+       <input asp-for="CompanyName" class="inputField" id="companyname" placeholder="Company Name" autocomplete="off" />
+            </div>
+
+            <!-- Password Input Field -->
+            <div class="inputContainer">
+                <svg class="inputIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#2e2e2e" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                </svg>
+                <input asp-for="Password" type="password" class="inputField" id="password" placeholder="Password" autocomplete="off" />
+                <span class="eyeIcon" onclick="togglePassword('password', this)">
+                    <i class="fas fa-eye" style="color: orange"></i>
+                </span>
+            </div>
+            <br />
+
+            <!-- Submit Button -->
+            <button type="submit" id="button">Login</button>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger" style="color: red; font-size: 0.95rem; font-weight: 500; margin-top: 10px;">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <div class="registerPrompt">
+                <span>Not a member?</span>
+                <a asp-controller="Advertiser" asp-action="RegisterAdvertiser" class="registerLink">Register now</a>
+            </div>
+
+        </form>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+    <script>
+        function togglePassword(fieldId, iconSpan) {
+          const field = document.getElementById(fieldId);
+          const icon = iconSpan.querySelector("i");
+
+          if (field.type === "password") {
+            field.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            field.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        }
+    </script>
+</body>
+</html>
+
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Bai Jamjuree', sans-serif;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        /* background-color: #212121; */
+        background-image: url();
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-size: cover;
+    }
+
+    .form_main {
+        width: 400px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+        padding: 30px;
+        /* box-shadow: rgba(209, 193, 255, 0.5) 0px 30px 90px; */
+        /* box-shadow: rgba(209, 193, 255, 0.56) 0px 5px 90px 4px; */
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .form_main::before {
+            position: absolute;
+            content: "";
+            width: 300px;
+            height: 300px;
+            background: linear-gradient( to bottom right, rgb(255, 217, 141),
+            /* Very light soft orange */ rgba(250, 225, 157, 0.9),
+            /* Lighter pastel orange */ rgba(253, 223, 148, 0.85)
+            /* Even lighter pastel orange */
+            );
+            transform: rotate(45deg);
+            left: -180px;
+            top: 75px;
+            z-index: 1;
+            border-radius: 30px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.082);
+        }
+
+    .heading {
+        font-size: 3rem;
+        color: orange;
+        font-weight: 700;
+        /* margin: 5px 0 10px 0; */
+        z-index: 2;
+    }
+
+    .inputContainer {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    .inputIcon {
+        position: absolute;
+        left: 3px;
+    }
+
+    .inputField {
+        width: 100%;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid rgb(173, 173, 173);
+        /* margin: 10px 0; */
+        color: black;
+        font-size: 1rem;
+        font-weight: 500;
+        box-sizing: border-box;
+        padding-left: 30px;
+        transition: border-bottom .4s;
+    }
+
+        .inputField:focus {
+            outline: none;
+            border-bottom: 2px solid orange;
+            transition: border-bottom .4s;
+        }
+
+        .inputField::placeholder {
+            color: rgb(80, 80, 80);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+    #button {
+        z-index: 2;
+        position: relative;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        background: linear-gradient(to bottom right, orange, rgba(255, 193, 7, 0.9), rgba(248, 224, 7, 0.85) );
+        height: 45px;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        /* margin: 10px; */
+        cursor: pointer;
+        transition: opacity 1s ease;
+    }
+
+        #button:hover {
+            opacity: 0.8;
+            transition: background-color 0.4s;
+        }
+
+
+    .forgotLink {
+        z-index: 2;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: red;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: color 0.3s, text-decoration 0.3s;
+        align-self: flex-start;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+        .forgotLink:hover {
+            color: black;
+            text-decoration: underline;
+        }
+
+
+    .registerPrompt {
+        z-index: 2;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #2e2e2e;
+    }
+
+    .registerLink {
+        color: orange;
+        font-weight: bolder;
+        margin-left: 5px;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+        .registerLink:hover {
+            color: burlywood;
+        }
+
+    .roleContainer {
+        width: 100%;
+        margin-bottom: 10px;
+        color: #2e2e2e;
+        font-weight: 500;
+        font-size: 1rem;
+        z-index: 2;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .roles label {
+        display: block;
+        margin: 5px 0;
+        font-size: 0.95rem;
+        cursor: pointer;
+    }
+
+    #para {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        right: 40px;
+        color: darkred;
+    }
+
+    .eyeIcon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 18px;
+        color: #555;
+        user-select: none;
+    }
+</style>
+

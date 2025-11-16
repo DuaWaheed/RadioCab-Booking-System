@@ -1,0 +1,168 @@
+﻿@inject E_project.Models.mycontext _context
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using E_project.Models
+
+@{
+    var admin_session = HttpContextAccessor.HttpContext?.Session?.GetString("driver_session");
+    var admin = admin_session != null ? _context.Drivers.FirstOrDefault(a => a.DriverId == int.Parse(admin_session)) : null;
+
+    var DriverLogo = admin?.DriverImage ?? "default.png";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="~/images/Logo/favicon_logo.png" type="image/x-icon">
+    <title>Driver Dashboard</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="~/css/Driver/dashboard.css" />
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+          rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul class="sidebar">
+                <li style="text-align: center; padding: 0px 0">
+                    <img src="~/images/Logo/Dashboard Logo.png"
+                         alt="Logo"
+                         style="
+                width: 220px;
+                height: 10px;
+                display: block;
+                margin: 0 auto;
+                object-fit: contain;
+              " />
+                </li>
+
+                <li class="active">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="car-outline"></ion-icon>
+                        </span>
+                        <span class="title">My Vehicle</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-action="RegisterCompany" asp-controller="Company">
+                        <span class="icon">
+                            <ion-icon name="wallet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Earnings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="notifications-outline"></ion-icon>
+                        </span>
+                        <span class="title">Notifications</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="chatbubbles-outline"></ion-icon>
+                        </span>
+                        <span class="title">Messages</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="help-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="heading">
+                    <h1>Driver Control Panel</h1>
+                    <!-- For Driver Dashboard -->
+                    <!-- <h1>Company Operations Hub</h1>  For Company Dashboard -->
+                </div>
+                <div class="nav-icons">
+                    <a href="#" class="nav-link">
+                        <i class="bx bxs-bell icon"></i>
+                        <span class="badge">5</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <!-- for message -->
+                        <!-- <i class="bx bxs-message-square-dots icon"></i> -->
+                        <!-- for decoded later -->
+                        <i class="bx bx-wallet icon"></i>
+                        <span class="badge">8</span>
+                    </a>
+                    <span class="divider"></span>
+                </div>
+
+                <div class="profile">
+                    <img src="@Url.Content("~/Drivers/" + DriverLogo)" asp-append-version="true"
+                         alt="profile_img"
+                         id="profile-img" />
+                    <ul class="profile-link" id="profile-dropdown">
+                        <li>
+                            <a href="#"><i class="bx bxs-user-circle icon"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="bx bxs-badge-dollar"></i> Subscriptions</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="bx bxs-log-out-circle"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="main-content">      <!-- Render the body content from the view -->      @RenderBody()  </div>
+
+        </div>
+
+        <!-- =========== Scripts =========  -->
+        <script src="~/js/Driver/dashboard.js"></script>
+
+        <!-- ====== ionicons ======= -->
+        <script type="module"
+                src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule
+                src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

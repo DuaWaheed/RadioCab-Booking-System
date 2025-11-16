@@ -1,0 +1,266 @@
+﻿
+@{
+    ViewData["Title"] = "RegisterDriver";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driver Registration</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <form action="" class="form_main">
+            <p class="heading">Driver Registration</p>
+
+            <!-- Driver Name -->
+            <div class="inputContainer">
+                <input type="text" class="inputField" name="driverName" placeholder="Driver Name" required />
+            </div>
+
+            <!-- Driver ID -->
+            <div class="inputContainer">
+                <input type="text" class="inputField" name="driverID" placeholder="Driver ID (must be unique)" required />
+            </div>
+
+            <!-- Password -->
+            <div class="inputContainer">
+                <input type="password" class="inputField" name="password" id="password" placeholder="Password" required />
+                <span class="eyeIcon" onclick="togglePassword('password', this)">👁️</span>
+            </div>
+
+            <!-- Contact Person -->
+            <div class="inputContainer">
+                <input type="text" class="inputField" name="contactPerson" placeholder="Contact Person" required />
+            </div>
+
+            <!-- Address -->
+            <div class="inputContainer">
+                <input type="text" class="inputField" name="address" placeholder="Address" required />
+            </div>
+
+            <!-- City -->
+            <div class="inputContainer">
+                <input type="text" class="inputField" name="city" placeholder="City" required />
+            </div>
+
+            <!-- Mobile -->
+            <div class="inputContainer">
+                <input type="tel" class="inputField" name="mobile" placeholder="Mobile" required />
+            </div>
+
+            <!-- Telephone -->
+            <div class="inputContainer">
+                <input type="tel" class="inputField" name="telephone" placeholder="Telephone" />
+            </div>
+
+            <!-- Email -->
+            <div class="inputContainer">
+                <input type="email" class="inputField" name="email" placeholder="Email" required />
+            </div>
+
+            <!-- Experience -->
+            <div class="inputContainer">
+                <input type="text" class="inputField" name="experience" placeholder="Experience" />
+            </div>
+
+            <!-- Description -->
+            <div class="inputContainer">
+                <textarea class="inputField" name="description" placeholder="Description" rows="2"></textarea>
+            </div>
+
+            <!-- Payment Type -->
+            <div class="inputContainer">
+                <select class="inputField" name="paymentType" id="paymentType" onchange="showAmount()">
+                    <option value="" disabled selected>Select Payment Type</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quaterly">Quaterly</option>
+                   
+                </select>
+            </div>
+
+            <!-- Display Amount -->
+            <div class="inputContainer">
+                <input type="text" class="inputField" id="paymentAmount" placeholder="Amount" readonly />
+            </div>
+
+            <button id="button" type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        function togglePassword(fieldId, iconElement) {
+            const field = document.getElementById(fieldId);
+            if (field.type === "password") {
+                field.type = "text";
+                iconElement.textContent = "🙈";
+            } else {
+                field.type = "password";
+                iconElement.textContent = "👁️";
+            }
+        }
+
+        function showAmount() {
+            const type = document.getElementById("paymentType").value;
+            const amountField = document.getElementById("paymentAmount");
+            let amount = "";
+
+            if (type === "monthly") amount = "$10";
+            else if (type === "quaterly") amount = "$25";
+           
+
+            amountField.value = amount;
+        }
+    </script>
+</body>
+</html>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Bai Jamjuree', sans-serif;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        /* background-color: #212121; */
+        background-image: url();
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-size: cover;
+    }
+
+    .form_main {
+        width: 500px;
+        height: 1000px;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+        padding: 30px;
+        /* box-shadow: rgba(209, 193, 255, 0.5) 0px 30px 90px; */
+        /* box-shadow: rgba(209, 193, 255, 0.56) 0px 5px 90px 4px; */
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .form_main::before {
+            position: absolute;
+            content: "";
+            width: 500px;
+            height: 300px;
+            background-color: burlywood;
+            transform: rotate(50deg);
+            left: -180px;
+            top: 75px;
+            z-index: 1;
+            border-radius: 30px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.082);
+        }
+
+    .heading {
+        font-size: 3rem;
+        color: #2e2e2e;
+        font-weight: 700;
+        /* margin: 5px 0 10px 0; */
+        z-index: 2;
+    }
+
+    .inputContainer {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    .inputIcon {
+        position: absolute;
+        left: 3px;
+    }
+
+    .inputField {
+        width: 100%;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid rgb(173, 173, 173);
+        /* margin: 10px 0; */
+        color: black;
+        font-size: 1rem;
+        font-weight: 500;
+        box-sizing: border-box;
+        padding-left: 30px;
+        transition: border-bottom .4s;
+    }
+
+        .inputField:focus {
+            outline: none;
+            border-bottom: 2px solid orange;
+            transition: border-bottom .4s;
+        }
+
+        .inputField::placeholder {
+            color: rgb(80, 80, 80);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+    #button {
+        z-index: 2;
+        position: relative;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        background-color: orange;
+        height: 45px;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        /* margin: 10px; */
+        cursor: pointer;
+        transition: background-color .4s;
+    }
+
+        #button:hover {
+            background-color: burlywood;
+            transition: background-color .4s;
+        }
+
+    .eyeIcon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 18px;
+        color: #555;
+        user-select: none;
+    }
+
+    /* Ensure inputContainer is position relative so eyeIcon works */
+    .inputContainer {
+        position: relative;
+    }
+</style>
+
+

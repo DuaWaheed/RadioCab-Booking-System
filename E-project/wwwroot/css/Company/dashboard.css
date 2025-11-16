@@ -1,0 +1,405 @@
+/* =========== Google Fonts ============ */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+J:ital,wght@0,100..400;1,100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+GB+J:ital,wght@0,100..400;1,100..400&display=swap');
+/* =============== Globals ============== */
+* {
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #f9a825; /* changed from purple to yellow */
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+/* =============== Navigation ================ */
+.sidebar img {
+    width: 150px !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient( to bottom right, #fac898, rgba(255, 193, 7, 0.9), rgba(255, 235, 59, 0.85) );
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+    .navigation.active {
+        width: 70px;
+    }
+
+    .navigation ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+        .navigation ul li {
+            position: relative;
+            width: 100%;
+            list-style: none;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+            /* for active */
+            .navigation ul li.active {
+                background-color: var(--white);
+            }
+
+                .navigation ul li.active a {
+                    color: var(--blue);
+                }
+                    /* --------- curve outside ---------- */
+                    .navigation ul li.active a::before {
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        top: -50px;
+                        width: 50px;
+                        height: 50px;
+                        background-color: transparent;
+                        border-radius: 50%;
+                        box-shadow: 35px 35px 0 10px var(--white);
+                        pointer-events: none;
+                    }
+
+                    .navigation ul li.active a::after {
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        bottom: -50px;
+                        width: 50px;
+                        height: 50px;
+                        background-color: transparent;
+                        border-radius: 50%;
+                        box-shadow: 35px -35px 0 10px var(--white);
+                        pointer-events: none;
+                    }
+
+            /* for hover */
+            /* .navigation ul li a {
+  display: inline-block;
+  transition: transform 0.25s ease-in-out, background 0.3s ease;
+}
+
+.navigation ul li a:hover {
+  transform: scaleX(1.1);
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 160, 77, 0.6)); /* transparent gradient */
+            .navigation ul li a {
+                display: inline-block;
+                transition: transform 0.25s ease-in-out, background 0.3s ease, border-radius 0.3s ease;
+            }
+
+            /* Only apply hover when li is NOT active */
+            .navigation ul li:not(.active) a:hover {
+                transform: scaleX(1.1);
+                background: linear-gradient( 45deg, rgba(255, 255, 255, 0.3), rgba(255, 160, 77, 0.6) );
+                border-radius: 300px;
+            }
+
+            .navigation ul li:nth-child(1) {
+                margin-bottom: 30px;
+                pointer-events: none;
+            }
+
+            .navigation ul li a {
+                position: relative;
+                display: block;
+                width: 100%;
+                display: flex;
+                text-decoration: none;
+                color: var(--white);
+                font-weight: bolder;
+            }
+
+                .navigation ul li a .icon {
+                    position: relative;
+                    display: block;
+                    min-width: 60px;
+                    height: 60px;
+                    line-height: 75px;
+                    text-align: center;
+                }
+
+                    .navigation ul li a .icon ion-icon {
+                        font-size: 1.75rem;
+                    }
+
+                .navigation ul li a .title {
+                    position: relative;
+                    display: block;
+                    padding: 0 10px;
+                    height: 60px;
+                    line-height: 60px;
+                    text-align: start;
+                    white-space: nowrap;
+                }
+
+/* ===================== Main ===================== */
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+
+    .main.active {
+        width: calc(100% - 80px);
+        left: 80px;
+    }
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white; /* or any color matching your design */
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* optional shadow for effect */
+}
+
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: orange;
+}
+
+/* Style for the heading */
+.topbar .heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bolder;
+    color: #333; /* Dark color for contrast */
+}
+
+    .topbar .heading h1 {
+        margin: 0;
+        text-align: center;
+        font-size: 35px; /* You can adjust the font size as needed */
+        color: orange; /* Dark Navy Blue or use any color that matches your theme */
+        font-family: "Playwrite GB J", cursive;
+        font-optical-sizing: auto;
+        font-weight: bolder;
+        font-style: normal;
+    }
+
+.nav-icons {
+    display: flex;
+    margin-right: 10px;
+    gap: 26px;
+    margin-top: 20px;
+}
+
+.nav-link {
+    position: relative;
+}
+
+    .nav-link .icon {
+        font-size: 22px;
+        color: orange;
+    }
+
+    .nav-link .badge {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid var(--light);
+        background: linear-gradient( to bottom right, orange, rgba(255, 193, 7, 0.9), rgba(255, 235, 59, 0.85) );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+.divider {
+    width: 1px;
+    background: var(--grey);
+    height: 12px;
+    display: block;
+}
+
+.profile {
+    position: relative;
+}
+
+    .profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover; /* Ensures the image fills the area, cropping as needed */
+        overflow: hidden; /* Prevents anything from overflowing the container */
+        cursor: pointer;
+        border: 2px solid orange;
+        margin-top: 20px;
+    }
+
+    .profile .profile-link {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        background: linear-gradient( to bottom right, #fac898, rgba(255, 193, 7, 0.9), rgba(255, 235, 59, 0.85) );
+        padding: 10px 0;
+        box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 180px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        z-index: 100;
+    }
+
+        .profile .profile-link.show {
+            opacity: 1;
+            pointer-events: visible;
+            top: 100%;
+            z-index: 100;
+        }
+
+        .profile .profile-link li {
+            list-style: none;
+        }
+
+        .profile .profile-link a {
+            padding: 10px 16px;
+            display: flex;
+            grid-gap: 10px;
+            font-size: 18px;
+            color: white;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: bolder;
+        }
+
+        .profile .profile-link a {
+            transition: transform 0.25s ease-in-out, background 0.3s ease, border-radius 0.3s ease, width 0.3s ease;
+        }
+
+            .profile .profile-link a:hover {
+                transform: scaleX(1.1);
+                background: linear-gradient( 45deg, rgba(255, 255, 255, 0.4), rgba(255, 160, 77, 0.7) );
+                width: 95%;
+            }
+/* Make sure the heading stays responsive */
+@media screen and (max-width: 768px) {
+    .topbar .heading h1 {
+        font-size: 24px; /* Smaller font size on smaller screens */
+    }
+}
+
+.user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .user img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+    .navigation {
+        left: -300px;
+    }
+
+        .navigation.active {
+            width: 300px;
+            left: 0;
+        }
+
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+        .main.active {
+            left: 300px;
+        }
+
+   
+}
+
+
+
+@media (max-width: 480px) {
+
+    .user {
+        min-width: 40px;
+    }
+
+    .navigation {
+        width: 100%;
+        left: -100%;
+        z-index: 1000;
+    }
+
+        .navigation.active {
+            width: 100%;
+            left: 0;
+        }
+
+    .toggle {
+        z-index: 10001;
+    }
+
+    .main.active .toggle {
+        color: #fff;
+        position: fixed;
+        right: 0;
+        left: initial;
+    }
+}
